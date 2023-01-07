@@ -8,7 +8,7 @@ public class StringExample3 {
         String name = readInputString("Please enter your first name");
         name = convertToCamelCase(name);
         System.out.println(name);
-        System.out.println("Hello");
+        System.out.println("Hello1");
     }
 
     private static String convertToCamelCase(String name) {
