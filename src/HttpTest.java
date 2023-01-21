@@ -6,6 +6,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.security.cert.X509Certificate;
 import java.io.IOException;
+import org.json.*;
 
 
 public class HttpTest {
@@ -14,6 +15,8 @@ public class HttpTest {
         String zipCode = readInputString("Please enter your zip code");
         String output = readURL("https://ziptasticapi.com/" + zipCode);
         System.out.println(output);
+        String city = queryJSON(output , "city");
+        System.out.println(city);
     }
 
     public static String readURL(String urlInput) throws Exception {
@@ -49,7 +52,6 @@ public class HttpTest {
         String line = "";
         String content = "";
         while ((line = br.readLine()) != null) {
-            System.out.println(line);
             content = content + line;
         }
         br.close();
@@ -64,5 +66,11 @@ public class HttpTest {
         // Reading data using readLine
         String input = reader.readLine();
         return input;
+    }
+
+    public static String queryJSON(String jsonString , String path){
+        JSONObject obj = new JSONObject(jsonString);
+        //String pageName = obj.getJSONObject("pageInfo").getString("pageName");
+        return obj.getString(path);
     }
 }
