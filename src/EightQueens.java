@@ -1,9 +1,11 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class EightQueens {
     public static void main(String[] args) throws IOException {
+
         String[] queenPosition1 = readInputString("Enter queen 1's position").split(",");
         String[] queenPosition2 = readInputString("Enter queen 2's position").split(",");
         String[] queenPosition3 = readInputString("Enter queen 3's position").split(",");
@@ -38,6 +40,7 @@ public class EightQueens {
     public static int getY(String queenPosition) {
         return Integer.parseInt(queenPosition.split(",")[1]);
     }
+
 
     public static boolean checkXValues(String[] queenPositions) {
         boolean noConflict = true;
@@ -121,5 +124,15 @@ public class EightQueens {
 
         // Reading data using readLine
         return reader.readLine();
+    }
+
+    public static int readInputNumber(String prompt) throws IOException {
+        System.out.println(prompt);
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(System.in));
+
+        // Reading data using readLine
+        String input = reader.readLine();
+        return Integer.parseInt(input);
     }
 }
